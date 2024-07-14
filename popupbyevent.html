@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Popup Message on Hover</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #welcomeText {
+            cursor: pointer;
+        }
+        #popupMessage {
+            display: none;
+            position: absolute;
+            padding: 5px;
+            background-color:pink;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+<h2 id="welcomeText">Welcome!!</h2>
+<div id="popupMessage">Hello! This is a popup message.</div>
+
+<script>
+    // Function to show the popup message
+    function showPopup(event) {
+        const popup = document.getElementById('popupMessage');
+        popup.style.display = 'block';
+        popup.style.left = event.pageX + 'px';
+        popup.style.top = event.pageY + 'px';
+    }
+
+    // Function to hide the popup message
+    function hidePopup() {
+        const popup = document.getElementById('popupMessage');
+        popup.style.display = 'none';
+    }
+
+    // Get the welcome text element
+    const welcomeText = document.getElementById('welcomeText');
+
+    // Add event listeners for mouseover and mouseout
+    welcomeText.addEventListener('mouseover', showPopup);
+    welcomeText.addEventListener('mouseout', hidePopup);
+</script>
+
+</body>
+</html>

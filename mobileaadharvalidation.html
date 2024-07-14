@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mobile Number and Aadhaar Card Number Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input[type=text] {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .validation-result {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h2>Mobile Number & Aadhaar Card Number Validation</h2>
+    
+    <h3>Validate Mobile Number</h3>
+    <input type="text" id="mobileNumber" placeholder="Enter your mobile number">
+    <button onclick="validateMobileNumber()">Validate Mobile Number</button>
+    <p id="mobileValidationResult" class="validation-result"></p>
+
+    <h3>Validate Aadhaar Card Number</h3>
+    <input type="text" id="aadhaarNumber" placeholder="Enter your Aadhaar card number">
+    <button onclick="validateAadhaarNumber()">Validate Aadhaar Card Number</button>
+    <p id="aadhaarValidationResult" class="validation-result"></p>
+
+    <script>
+        function validateMobileNumber() {
+            var mobileNumber = document.getElementById("mobileNumber").value.trim();
+            // Regular expression for Indian mobile numbers (10 digits starting with 7, 8, or 9)
+            var mobilePattern = /^[789]\d{9}$/;
+
+            var resultElement = document.getElementById("mobileValidationResult");
+            if (mobilePattern.test(mobileNumber)) {
+                resultElement.textContent = mobileNumber + " is a valid mobile number.";
+                resultElement.className = "success";
+            } else {
+                resultElement.textContent = mobileNumber + " is not a valid mobile number.";
+                resultElement.className = "error";
+            }
+        }
+
+        function validateAadhaarNumber() {
+            var aadhaarNumber = document.getElementById("aadhaarNumber").value.trim();
+            // Regular expression for Indian Aadhaar card number (12 digits)
+            var aadhaarPattern = /^\d{12}$/;
+
+            var resultElement = document.getElementById("aadhaarValidationResult");
+            if (aadhaarPattern.test(aadhaarNumber)) {
+                resultElement.textContent = aadhaarNumber + " is a valid Aadhaar number.";
+                resultElement.className = "success";
+            } else {
+                resultElement.textContent = aadhaarNumber + " is not a valid Aadhaar number.";
+                resultElement.className = "error";
+            }
+        }
+    </script>
+</body>
+</html>

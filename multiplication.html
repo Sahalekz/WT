@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiplication Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 10px auto;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: pink;
+        }
+        #controls {
+            text-align: center;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Multiplication Table</h2>
+
+<div id="controls">
+    <label for="rows">Enter number of rows:</label>
+    <input type="number" id="rows" min="1" value="10">
+    <button onclick="generateTable()">Generate Table</button>
+</div>
+
+<table id="multiplicationTable">
+    <!-- Table will be generated here -->
+</table>
+
+<script>
+    function generateTable() {
+        // Get the number of rows from user input
+        var numRows = document.getElementById('rows').value;
+        var table = document.getElementById('multiplicationTable');
+        
+        // Clear any existing content in the table
+        table.innerHTML = '';
+
+        // Create table header
+        let headerRow = '<thead><tr><th>x</th>';
+        for (let i = 1; i <= 10; i++) {
+            headerRow += '<th>' + i + '</th>';
+        }
+        headerRow += '</tr></thead>';
+        table.innerHTML += headerRow;
+
+        // Create table body
+        let tableBody = '<tbody>';
+        for (let i = 1; i <= numRows; i++) {
+            tableBody += '<tr><th>' + i + '</th>';
+            for (let j = 1; j <= 10; j++) {
+                tableBody += '<td>' + (i * j) + '</td>';
+            }
+            tableBody += '</tr>';
+        }
+        tableBody += '</tbody>';
+
+        // Append the generated table body to the table
+        table.innerHTML += tableBody;
+    }
+
+    // Generate the default table when the page loads
+    window.onload = generateTable;
+</script>
+
+</body>
+</html>

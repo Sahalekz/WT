@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>First Name and Last Name Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input[type=text] {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .validation-result {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h2>First Name and Last Name Validation</h2>
+    
+    <label for="firstName">First Name:</label><br>
+    <input type="text" id="firstName" placeholder="Enter your first name">
+    <br>
+    <label for="lastName">Last Name:</label><br>
+    <input type="text" id="lastName" placeholder="Enter your last name">
+    <br>
+    <button onclick="validateAndDisplay()">Validate and Display</button>
+    <p id="validationResult" class="validation-result"></p>
+
+    <script>
+        function validateAndDisplay() {
+            var firstName = document.getElementById("firstName").value.trim();
+            var lastName = document.getElementById("lastName").value.trim();
+
+            var firstNamePattern = /^[A-Za-z]{1,20}$/; // Letters only, 1-20 characters
+            var lastNamePattern = /^[A-Za-z]{1,20}$/; // Letters only, 1-20 characters
+
+            var validationResultElement = document.getElementById("validationResult");
+
+            if (!firstNamePattern.test(firstName)) {
+                validationResultElement.textContent = "Invalid First Name. Please enter letters only, 1-20 characters.";
+                validationResultElement.className = "error";
+                return;
+            }
+
+            if (!lastNamePattern.test(lastName)) {
+                validationResultElement.textContent = "Invalid Last Name. Please enter letters only, 1-20 characters.";
+                validationResultElement.className = "error";
+                return;
+            }
+
+            // If both first name and last name are valid
+            validationResultElement.textContent = `First Name: ${firstName}, Last Name: ${lastName}`;
+            validationResultElement.className = "success";
+        }
+    </script>
+</body>
+</html>
