@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+    <title>Simple Timer with setTimeout</title>
+</head>
+<body>
+    <div id="timer">10</div>
+    <button onclick="startTimer()">Start Timer</button>
+
+    <script>
+        function startTimer() {
+            let timeLeft = 10;
+            let timerElement = document.getElementById('timer');
+            
+            function countdown() {
+                timerElement.textContent = timeLeft;
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    setTimeout(countdown, 1000);
+                } else {
+                    alert('Time is up!');
+                }
+            }
+            
+            countdown();
+        }
+    </script>
+</body>
+</html>
