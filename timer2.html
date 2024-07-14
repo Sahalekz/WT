@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Simple Timer</title>
+</head>
+<body>
+    <div id="timer">10</div>
+    <button onclick="startTimer()">Start Timer</button>
+
+    <script>
+        function startTimer() {
+            let timeLeft = 10;
+            let timerElement = document.getElementById('timer');
+
+            let timerInterval = setInterval(() => {
+                timerElement.textContent = timeLeft;
+                timeLeft--;
+
+                if (timeLeft < 0) {
+                    clearInterval(timerInterval);
+                    alert('Time is up!');
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
